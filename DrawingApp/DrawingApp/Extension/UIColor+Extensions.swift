@@ -8,29 +8,58 @@
 import UIKit.UIColor
 
 extension UIColor {
-  static var systemRandomColor: UIColor {
-    systemColor.randomElement() ?? .systemMint
-  }
-  
-  private static var systemColor: [UIColor] {
-    [
-      .systemBlue,
-      .systemBrown,
-      .systemCyan,
-      .systemGreen,
-      .systemIndigo,
-      .systemMint,
-      .systemOrange,
-      .systemPink,
-      .systemPurple,
-      .systemTeal,
-      .systemYellow,
-      .systemGray,
-      .systemGray2,
-      .systemGray3,
-      .systemGray4,
-      .systemGray5,
-      .systemGray6
-    ]
+  static func colorToSystemColor(_ color: Color) -> UIColor {
+    switch color {
+    case .systemBlue:
+      return .systemBlue
+      
+    case .systemBrown:
+      return .systemBrown
+      
+    case .systemCyan:
+      return .systemCyan
+      
+    case .systemGreen:
+      return .systemGreen
+      
+    case .systemIndigo:
+      return .systemIndigo
+      
+    case .systemMint:
+      return .systemMint
+      
+    case .systemOrange:
+      return .systemOrange
+      
+    case .systemPink:
+      return .systemPink
+      
+    case .systemPurple:
+      return .systemPurple
+      
+    case .systemTeal:
+      return .systemTeal
+      
+    case .systemYellow:
+      return .systemYellow
+      
+    case .systemGray:
+      return .systemGray
+      
+    case .systemGray2:
+      return .systemGray2
+      
+    case .systemGray3:
+      return .systemGray3
+      
+    case .systemGray4:
+      return .systemGray4
+      
+    case .systemGray5:
+      return .systemGray5
+      
+    case .systemGray6:
+      return .systemGray6
+    }
   }
 }

@@ -16,9 +16,4 @@ final class CanvasView: UIView {
   required init?(coder: NSCoder) {
     super.init(coder: coder)
   }
-  
-  func append(rectangle: Rectangle) {
-    let rectangleView = RectangleView(rectangle: rectangle)
-    addSubview(rectangleView)
-  }
 }

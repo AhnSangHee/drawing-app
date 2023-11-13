@@ -12,25 +12,17 @@ protocol RectangleViewDelegate: AnyObject {
 }
 
 final class RectangleView: UIView {
-  private let rectangle: Rectangle
+  private let rectangle: Drawable
   
   weak var delegate: RectangleViewDelegate?
   
-  init(rectangle: Rectangle) {
-    self.rectangle = rectangle
+  init(_ drawable: Drawable) {
+    self.rectangle = drawable
+    
     super.init(frame: .zero)
-    setLayout()
   }
   
   required init?(coder: NSCoder) {
-    self.rectangle = Rectangle(color: .systemRandomColor, id: .init(), point: .init(x: 0.0, y: 0.0))
-    
-    super.init(coder: coder)
-  }
-  
-  private func setLayout() {
-    let size = 100.0
-    self.frame = CGRect(x: rectangle.point.x, y: rectangle.point.y, width: 100, height: 100)
-    self.backgroundColor = rectangle.color
+    fatalError()
   }
 }

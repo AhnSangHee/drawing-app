@@ -8,7 +8,7 @@
 import Combine
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
   
   private let canvasView: CanvasView = {
     let view = CanvasView()
@@ -46,7 +46,11 @@ class ViewController: UIViewController {
         guard let self = self else { return }
         switch event {
         case .rectangleDidCreated(let rectangle):
-          canvasView.append(rectangle: rectangle)
+          let rectangleView = RectangleView(rectangle)
+          let size = 100.0
+          rectangleView.frame = CGRect(x: rectangle.point.x, y: rectangle.point.y, width: size, height: size)
+          rectangleView.backgroundColor = UIColor.colorToSystemColor(rectangle.color)
+          canvasView.addSubview(rectangleView)
         }
       }
       .store(in: &cancellables)

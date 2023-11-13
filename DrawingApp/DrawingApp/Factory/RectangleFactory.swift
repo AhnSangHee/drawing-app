@@ -9,7 +9,7 @@ import Foundation
 
 struct RectangleFactory {
   func create(_ boundary: Boundary) -> Rectangle {
-    return Rectangle(color: .systemRandomColor, id: UUID(), point: createRandomPoint(boundary))
+    return Rectangle(color: .random(), id: UUID(), point: createRandomPoint(boundary))
   }
   
   private func createRandomPoint(_ boundary: Boundary) -> Point {
