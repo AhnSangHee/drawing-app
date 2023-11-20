@@ -31,14 +31,14 @@ final class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    canvasView.delegate = self
-    panelView.delegate = self
-    
     bind()
     setLayout()
   }
   
   private func bind() {
+    canvasView.delegate = self
+    panelView.delegate = self
+    
     let output = viewModel.transform(
       input: input.eraseToAnyPublisher(),
       boundary: Boundary(x: view.bounds.size.width, y: view.bounds.size.height - 100.0)

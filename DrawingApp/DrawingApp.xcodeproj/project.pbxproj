@@ -36,6 +36,7 @@
 		5CCAD39C2AFCD8F000EA1327 /* CanvasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCAD3862AFCB0D600EA1327 /* CanvasViewModel.swift */; };
 		5CCAD39E2AFCDA1300EA1327 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCAD3712AFCAF9F00EA1327 /* UIColor+Extensions.swift */; };
 		5CCAD3A02AFF3F6400EA1327 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCAD39F2AFF3F6400EA1327 /* Color.swift */; };
+		5CCAD3AE2B0B3A3400EA1327 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCAD3AD2B0B3A3400EA1327 /* Canvas.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		5CCAD38C2AFCD88300EA1327 /* DrawingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrawingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CCAD38E2AFCD88300EA1327 /* DrawingAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingAppTests.swift; sourceTree = "<group>"; };
 		5CCAD39F2AFF3F6400EA1327 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		5CCAD3AD2B0B3A3400EA1327 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				5CCAD37D2AFCB00B00EA1327 /* Drawable.swift */,
 				5CCAD37F2AFCB03800EA1327 /* Drawing.swift */,
 				5CCAD39F2AFF3F6400EA1327 /* Color.swift */,
+				5CCAD3AD2B0B3A3400EA1327 /* Canvas.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				5C5BFDF32AF7805F00D6B5A0 /* AppDelegate.swift in Sources */,
 				5CCAD37E2AFCB00B00EA1327 /* Drawable.swift in Sources */,
 				5CCAD3A02AFF3F6400EA1327 /* Color.swift in Sources */,
+				5CCAD3AE2B0B3A3400EA1327 /* Canvas.swift in Sources */,
 				5C5BFDF52AF7805F00D6B5A0 /* SceneDelegate.swift in Sources */,
 				5CCAD3722AFCAF9F00EA1327 /* UIColor+Extensions.swift in Sources */,
 				5CCAD37A2AFCAFF300EA1327 /* Rectangle.swift in Sources */,

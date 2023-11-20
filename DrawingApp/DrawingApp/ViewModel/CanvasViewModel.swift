@@ -21,8 +21,7 @@ final class CanvasViewModel {
     case canvasViewDidTapped
   }
   
-  private(set) var rectangles = [Rectangle]()
-  private var selectedRectangle: Rectangle?
+  private var canvas = Canvas()
   private var cancellables = Set<AnyCancellable>()
   private let output = PassthroughSubject<Output, Never>()
   
@@ -46,21 +45,14 @@ final class CanvasViewModel {
   private func createRectangle(_ boundary: Boundary) {
     let factory = RectangleFactory()
     let rectangle = factory.create(boundary)
-    rectangles.append(rectangle)
+    canvas.addRectangle(rectangle)
     output.send(.rectangleDidCreated(rectangle: rectangle))
   }
   
   private func selectRectangle(_ drawable: Drawable) {
-    for index in 0..<rectangles.count {
-      if rectangles[index].id == drawable.id {
-        rectangles[index].isSelected = true
-      }
-    }
-    
-    for rectangle in rectangles {
-      if rectangle.id == drawable.id {
-        selectedRectangle = rectangle
-        output.send(.rectangleDidSelected(rectangle: rectangle))
+    for index in 0..<canvas.rectangles.count {
+      if canvas.rectangles[index].id == drawable.id {
+        output.send(.rectangleDidSelected(rectangle: canvas.rectangles[index]))
       }
     }
   }

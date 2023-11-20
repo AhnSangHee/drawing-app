@@ -11,7 +11,6 @@ struct Rectangle: Drawable, CustomDebugStringConvertible {
   var color: Color
   var id: UUID
   var point: Point
-  var isSelected: Bool = false
   
   init(color: Color, id: UUID, point: Point) {
     self.color = color
