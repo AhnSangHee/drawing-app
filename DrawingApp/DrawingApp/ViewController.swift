@@ -22,6 +22,8 @@ final class ViewController: UIViewController {
     return view
   }()
   
+  private var objects = [UUID : RectangleView]()
+  private var selectedId: UUID?
   private let viewModel = CanvasViewModel()
   private let input = PassthroughSubject<CanvasViewModel.Input, Never>()
   private var cancellables = Set<AnyCancellable>()
@@ -29,6 +31,7 @@ final class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    canvasView.delegate = self
     panelView.delegate = self
     
     bind()
@@ -45,12 +48,28 @@ final class ViewController: UIViewController {
       .sink { [weak self] event in
         guard let self = self else { return }
         switch event {
-        case .rectangleDidCreated(let rectangle):
+        case let .rectangleDidCreated(rectangle):
           let rectangleView = RectangleView(rectangle)
+          rectangleView.delegate = self
+          
           let size = 100.0
           rectangleView.frame = CGRect(x: rectangle.point.x, y: rectangle.point.y, width: size, height: size)
           rectangleView.backgroundColor = UIColor.colorToSystemColor(rectangle.color)
           canvasView.addSubview(rectangleView)
+          objects[rectangle.id] = rectangleView
+          
+        case let .rectangleDidSelected(rectangle: rectangle):
+          if let selectedId = selectedId {
+            objects[selectedId]?.deselected()
+          }
+          selectedId = rectangle.id
+          objects[rectangle.id]?.selected()
+          
+        case .canvasViewDidTapped:
+          if let selectedId = selectedId {
+            objects[selectedId]?.deselected()
+          }
+          selectedId = nil
         }
       }
       .store(in: &cancellables)
@@ -80,4 +99,16 @@ extension ViewController: PanelViewDelegate {
   }
   
   func drawingButtonDidTapped() { }
+}
+
+extension ViewController: RectangleViewDelegate {
+  func rectangleDidTapped(_ drawable: Drawable) {
+    input.send(.rectangleDidTapped(drawable))
+  }
+}
+
+extension ViewController: CanvasViewDelegate {
+  func canvasDidTapped() {
+    input.send(.canvasViewDidTapped)
+  }
 }
